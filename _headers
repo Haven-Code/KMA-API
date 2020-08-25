@@ -3,4 +3,3 @@
   Access-Control-Allow-Methods: *
   Access-Control-Max-Age: 3600
   Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept
-  Content-Type: application/json
