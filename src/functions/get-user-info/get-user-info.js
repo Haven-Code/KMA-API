@@ -8,6 +8,14 @@ const HEAD = {
 }
 
 exports.handler = async (event, context) => {
+
+	if (event.httpMethod == "OPTIONS") {
+		return {
+			statusCode: 200,
+			headers: HEAD,
+			body: 'This was a preflight call!'
+		}
+	}
 	// if (event.httpMethod !== "POST" || event.httpMethod !== "OPTIONS") return { statusCode: 500, body: JSON.stringify({ code: "ERROR PROTOCAL", message: "Invalid Method" }) }
 
 	try {
@@ -43,7 +51,7 @@ exports.handler = async (event, context) => {
 		}
 
 	} catch (err) {
-		return  {
+		return {
 			statusCode: 500,
 			headers: HEAD,
 			body: JSON.stringify({ code: "ERROR", message: err })
