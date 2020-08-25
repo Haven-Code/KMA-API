@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/Haven-Code/KMA-API/issues"
   },
-  "homepage": "https://github.com/Haven-Code/KMA-API#readme"
+  "homepage": "https://github.com/Haven-Code/KMA-API#readme",
+  "dependencies": {
+    "netlify-cli": "^2.59.1",
+    "netlify-lambda": "^2.0.1"
+  }
 }
