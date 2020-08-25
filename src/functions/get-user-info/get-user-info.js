@@ -2,9 +2,10 @@
 const CMC = require("cmcsoft-iu")({ HOST_API: "http://qldt.actvn.edu.vn" })
 
 const HEAD = {
-	'Access-Control-Allow-Origin': "*",
-	'Access-Control-Allow-Methods': "GET, POST,OPTIONS,DELETE,PUT",
-	"Access-Control-Allow-Credentials": true
+	"Access-Control-Allow-Origin": "*",
+	"Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+	"Access-Control-Allow-Credentials": true,
+	"Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
 }
 
 exports.handler = async (event, context) => {
