@@ -17,7 +17,7 @@ exports.handler = async (event, context) => {
 			body: 'This was a preflight call!'
 		}
 	}
-	
+
 	if (event.httpMethod != "POST") return { statusCode: 500, body: JSON.stringify({ code: "ERROR PROTOCAL", message: "Invalid Method" }) }
 
 	try {
@@ -43,22 +43,22 @@ exports.handler = async (event, context) => {
 
 
 		} catch (err) {
-			//console.log("INSIDE CATCH ERROR: ", err);
-			
+			console.log("INSIDE CATCH ERROR: ");
+
 			return {
 				statusCode: 200,
 				headers: HEAD,
-				body: JSON.stringify({ code: "INSIDE ERROR", message: err })
+				body: JSON.stringify({ code: "ERROR", type: "IN", message: err })
 			}
 		}
 
 	} catch (err) {
-		console.log("OUTSIDE CATCH ERROR: ", err)
+		console.log("OUTSIDE CATCH ERROR: ")
 
 		return {
 			statusCode: 500,
 			headers: HEAD,
-			body: JSON.stringify({ code: "OUTSIDE ERROR", message: err })
+			body: JSON.stringify({ code: "ERROR", type: "OUT", message: err })
 		}
 
 	}
