@@ -10,7 +10,7 @@ const headers = {
 	'Access-Control-Allow-Credentials': 'true',
 };
 
-exports.handler = async (event, context) => {
+exports.handler = async (event, context, callback) => {
 	if (event.httpMethod != "POST") return { statusCode: 200, body: JSON.stringify({ code: "ERROR", message: "Invalid Method" }) }
 
 	try {
@@ -28,25 +28,25 @@ exports.handler = async (event, context) => {
 				schedule: schedule
 			}
 
-			return {
+			callback(null, {
 				statusCode: 200,
 				headers,
 				body: JSON.stringify({ code: "SUCCESS", data: data })
-			}
+			})
 
 		} catch (err) {
-			return {
+			callback(null, {
 				statusCode: 200,
 				headers,
 				body: JSON.stringify({ code: "ERROR", message: err })
-			}
+			})
 		}
 
 	} catch (err) {
-		return {
+		callback(null, {
 			statusCode: 500,
 			headers,
 			body: err.toString()
-		}
+		})
 	}
 }
