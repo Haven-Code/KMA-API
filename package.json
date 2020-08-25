@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Haven-Code/KMA-API#readme",
   "dependencies": {
+    "cmcsoft-iu": "git+https://github.com/phuchptty/CMCSoft-IU.git",
     "netlify-cli": "^2.59.1",
     "netlify-lambda": "^2.0.1"
   }
