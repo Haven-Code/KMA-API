@@ -1,13 +1,8 @@
 // Docs on event and context https://www.netlify.com/docs/functions/#the-handler-method
 const CMC = require("cmcsoft-iu")({ HOST_API: "http://qldt.actvn.edu.vn" })
 
-const headers = {
-	'Access-Control-Allow-Origin': '*',
-	'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
-	'Content-Type': 'application/json',
-	'Access-Control-Allow-Methods': '*',
-	'Access-Control-Max-Age': '2592000',
-	'Access-Control-Allow-Credentials': 'true',
+const HEAD = {
+	'Access-Control-Allow-Origin': '*'
 };
 
 exports.handler = async (event, context, callback) => {
@@ -30,14 +25,14 @@ exports.handler = async (event, context, callback) => {
 
 			callback(null, {
 				statusCode: 200,
-				headers,
+				headers: HEAD,
 				body: JSON.stringify({ code: "SUCCESS", data: data })
 			})
 
 		} catch (err) {
 			callback(null, {
 				statusCode: 200,
-				headers,
+				headers: HEAD,
 				body: JSON.stringify({ code: "ERROR", message: err })
 			})
 		}
@@ -45,7 +40,7 @@ exports.handler = async (event, context, callback) => {
 	} catch (err) {
 		callback(null, {
 			statusCode: 500,
-			headers,
+			headers: HEAD,
 			body: err.toString()
 		})
 	}
