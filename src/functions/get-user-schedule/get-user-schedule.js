@@ -22,8 +22,6 @@ exports.handler = async (event, context) => {
 		try {
 
 			const api = await CMC({ user: rqBody.username, pass: rqBody.password })
-
-			// const student = await api.studentProfile.show()
 			const dpr = await api.studentTimeTable.showTimeTable()
 
 			return {
