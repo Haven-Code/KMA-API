@@ -17,13 +17,12 @@ exports.handler = async (event, context) => {
 			body: 'This was a preflight call!'
 		}
 	}
-	// if (event.httpMethod !== "POST" || event.httpMethod !== "OPTIONS") return { statusCode: 500, body: JSON.stringify({ code: "ERROR PROTOCAL", message: "Invalid Method" }) }
+	
+	if (event.httpMethod != "POST") return { statusCode: 500, body: JSON.stringify({ code: "ERROR PROTOCAL", message: "Invalid Method" }) }
 
 	try {
 		//const rqBody = event.queryStringParameters
 		const rqBody = JSON.parse(event.body)
-
-		console.log(event.body)
 
 		try {
 
@@ -44,18 +43,21 @@ exports.handler = async (event, context) => {
 
 
 		} catch (err) {
+			console.log("INSIDE CATCH ERROR: ", err);
 			return {
 				statusCode: 500,
 				headers: HEAD,
-				body: JSON.stringify({ code: "ERROR", message: err })
+				body: JSON.stringify({ code: "INSIDE ERROR", message: err })
 			}
 		}
 
 	} catch (err) {
+		console.log("OUTSIDE CATCH ERROR: ", err)
+		
 		return {
 			statusCode: 500,
 			headers: HEAD,
-			body: JSON.stringify({ code: "ERROR", message: err })
+			body: JSON.stringify({ code: "OUTSIDE ERROR", message: err })
 		}
 
 	}
