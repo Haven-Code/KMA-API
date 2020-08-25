@@ -42,7 +42,7 @@ exports.handler = async (event, context, callback) => {
 		callback(null, {
 			statusCode: 500,
 			headers: HEAD,
-			body: err.toString()
+			body: JSON.stringify({ code: "ERROR", message: err })
 		})
 	}
 }
