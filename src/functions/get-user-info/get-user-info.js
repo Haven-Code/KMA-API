@@ -27,19 +27,35 @@ exports.handler = async (event, context) => {
 
 			return {
 				statusCode: 200,
-				headers,
+				headers: {
+					'content-type': 'application/json',
+					'Access-Control-Allow-Origin': '*',
+					'Access-Control-Allow-Methods': 'GET, POST, PUT, OPTION',
+				},
 				body: JSON.stringify({ code: "SUCCESS", data: data })
 			}
 
 		} catch (err) {
 			return {
 				statusCode: 200,
-				headers,
+				headers: {
+					'content-type': 'application/json',
+					'Access-Control-Allow-Origin': '*',
+					'Access-Control-Allow-Methods': 'GET, POST, PUT, OPTION',
+				},
 				body: JSON.stringify({ code: "ERROR", message: err })
 			}
 		}
 
 	} catch (err) {
-		return { statusCode: 500, headers, body: err.toString() }
+		return {
+			statusCode: 500,
+			headers: {
+				'content-type': 'application/json',
+				'Access-Control-Allow-Origin': '*',
+				'Access-Control-Allow-Methods': 'GET, POST, PUT, OPTION',
+			},
+			body: err.toString()
+		}
 	}
 }
