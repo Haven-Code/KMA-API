@@ -21,6 +21,6 @@
     Access-Control-Allow-Headers = "Origin, X-Requested-With, Content-Type, Accept"
     Access-Control-Allow-Methods = "GET,POST,OPTIONS,DELETE,PUT"
     Access-Control-Allow-Origin = "*"
-    Access-Control-Allow-Credentials: true
+    Access-Control-Allow-Credentials = true
     Access-Control-Max-Age = "3600"
     Content-Type = "text/plain"
