@@ -7,11 +7,13 @@ const HEAD = {
 }
 
 exports.handler = async (event, context, callback) => {
-	if (event.httpMethod != "POST") return { statusCode: 200, body: JSON.stringify({ code: "ERROR", message: "Invalid Method" }) }
+	if (event.httpMethod != "POST") return { statusCode: 405, body: JSON.stringify({ code: "ERROR", message: "Invalid Method" }) }
 
 	try {
 		//const rqBody = event.queryStringParameters
 		const rqBody = JSON.parse(event.body)
+
+		console.log(event.body)
 
 		try {
 
@@ -32,7 +34,7 @@ exports.handler = async (event, context, callback) => {
 
 		} catch (err) {
 			callback(null, {
-				statusCode: 200,
+				statusCode: 500,
 				headers: HEAD,
 				body: JSON.stringify({ code: "ERROR", message: err })
 			})
