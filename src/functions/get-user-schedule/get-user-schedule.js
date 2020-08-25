@@ -2,16 +2,15 @@
 
 const CMC = require("cmcsoft-iu")({ HOST_API: "http://qldt.actvn.edu.vn" })
 
-const returnSmt = (data) => {
-	return {
-		statusCode: 200,
-		body: JSON.stringify({ data: data })
-	}
-}
+const headers = {
+	'Access-Control-Allow-Origin': '*',
+	'Access-Control-Allow-Headers': 'Content-Type',
+	'Access-Control-Allow-Methods': 'GET, POST'
+};
 
 exports.handler = async (event, context) => {
 
-	if (event.httpMethod != "POST") return { statusCode: 200, body: JSON.stringify({code: "ERROR", message: "Invalid Method"}) }
+	if (event.httpMethod != "POST") return { statusCode: 200, body: JSON.stringify({ code: "ERROR", message: "Invalid Method" }) }
 
 	try {
 		// const username = event.queryStringParameters.username || ''
@@ -26,17 +25,19 @@ exports.handler = async (event, context) => {
 
 			return {
 				statusCode: 200,
+				headers,
 				body: JSON.stringify({ code: "SUCCESS", data: dpr })
 			}
 
 		} catch (err) {
 			return {
 				statusCode: 200,
+				headers,
 				body: JSON.stringify({ code: "ERROR", message: err })
 			}
 		}
 
 	} catch (err) {
-		return { statusCode: 500, body: err.toString() }
+		return { statusCode: 500, headers, body: err.toString() }
 	}
 }
