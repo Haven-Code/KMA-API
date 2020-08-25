@@ -30,7 +30,10 @@ exports.handler = async (event, context) => {
 				headers: {
 					'content-type': 'application/json',
 					'Access-Control-Allow-Origin': '*',
-					'Access-Control-Allow-Methods': 'GET, POST, PUT, OPTION',
+					'Access-Control-Allow-Methods': 'GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH',
+					'Access-Control-Expose-Headers': 'status, access-control-allow-headers, access-control-allow-methods, access-control-allow-origin, cache-control, date, content-type, age, server, x-nf-request-id',
+					'Access-Control-Allow-Credentials': false,
+					'Access-Control-Allow-Headers': 'Content- Type, status, access - control - allow - headers, access - control - allow - methods, access - control - allow - origin, cache - control, date, content - type, age, server, x - nf - request - id'
 				},
 				body: JSON.stringify({ code: "SUCCESS", data: data })
 			}
@@ -41,7 +44,10 @@ exports.handler = async (event, context) => {
 				headers: {
 					'content-type': 'application/json',
 					'Access-Control-Allow-Origin': '*',
-					'Access-Control-Allow-Methods': 'GET, POST, PUT, OPTION',
+					'Access-Control-Allow-Methods': 'GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH',
+					'Access-Control-Expose-Headers': 'status, access-control-allow-headers, access-control-allow-methods, access-control-allow-origin, cache-control, date, content-type, age, server, x-nf-request-id',
+					'Access-Control-Allow-Credentials': false,
+					'Access-Control-Allow-Headers': 'Content- Type, status, access - control - allow - headers, access - control - allow - methods, access - control - allow - origin, cache - control, date, content - type, age, server, x - nf - request - id'
 				},
 				body: JSON.stringify({ code: "ERROR", message: err })
 			}
@@ -53,7 +59,10 @@ exports.handler = async (event, context) => {
 			headers: {
 				'content-type': 'application/json',
 				'Access-Control-Allow-Origin': '*',
-				'Access-Control-Allow-Methods': 'GET, POST, PUT, OPTION',
+				'Access-Control-Allow-Methods': 'GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH',
+				'Access-Control-Expose-Headers': 'status, access-control-allow-headers, access-control-allow-methods, access-control-allow-origin, cache-control, date, content-type, age, server, x-nf-request-id',
+				'Access-Control-Allow-Credentials': false,
+				'Access-Control-Allow-Headers': 'Content- Type, status, access - control - allow - headers, access - control - allow - methods, access - control - allow - origin, cache - control, date, content - type, age, server, x - nf - request - id'
 			},
 			body: err.toString()
 		}
