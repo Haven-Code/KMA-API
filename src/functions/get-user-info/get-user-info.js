@@ -43,9 +43,10 @@ exports.handler = async (event, context) => {
 
 
 		} catch (err) {
-			console.log("INSIDE CATCH ERROR: ", err);
+			//console.log("INSIDE CATCH ERROR: ", err);
+			
 			return {
-				statusCode: 500,
+				statusCode: 200,
 				headers: HEAD,
 				body: JSON.stringify({ code: "INSIDE ERROR", message: err })
 			}
@@ -53,7 +54,7 @@ exports.handler = async (event, context) => {
 
 	} catch (err) {
 		console.log("OUTSIDE CATCH ERROR: ", err)
-		
+
 		return {
 			statusCode: 500,
 			headers: HEAD,
