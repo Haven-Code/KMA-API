@@ -3,8 +3,11 @@ const CMC = require("cmcsoft-iu")({ HOST_API: "http://qldt.actvn.edu.vn" })
 
 const headers = {
 	'Access-Control-Allow-Origin': '*',
-	'Access-Control-Allow-Headers': 'Content-Type',
-	'Access-Control-Allow-Methods': 'GET, POST'
+	'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+	'Content-Type': 'application/json',
+	'Access-Control-Allow-Methods': '*',
+	'Access-Control-Max-Age': '2592000',
+	'Access-Control-Allow-Credentials': 'true',
 };
 
 exports.handler = async (event, context) => {
@@ -27,28 +30,14 @@ exports.handler = async (event, context) => {
 
 			return {
 				statusCode: 200,
-				headers: {
-					'content-type': 'application/json',
-					'Access-Control-Allow-Origin': '*',
-					'Access-Control-Allow-Methods': 'GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH',
-					'Access-Control-Expose-Headers': 'status, access-control-allow-headers, access-control-allow-methods, access-control-allow-origin, cache-control, date, content-type, age, server, x-nf-request-id',
-					'Access-Control-Allow-Credentials': false,
-					'Access-Control-Allow-Headers': 'Content- Type, status, access - control - allow - headers, access - control - allow - methods, access - control - allow - origin, cache - control, date, content - type, age, server, x - nf - request - id'
-				},
+				headers,
 				body: JSON.stringify({ code: "SUCCESS", data: data })
 			}
 
 		} catch (err) {
 			return {
 				statusCode: 200,
-				headers: {
-					'content-type': 'application/json',
-					'Access-Control-Allow-Origin': '*',
-					'Access-Control-Allow-Methods': 'GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH',
-					'Access-Control-Expose-Headers': 'status, access-control-allow-headers, access-control-allow-methods, access-control-allow-origin, cache-control, date, content-type, age, server, x-nf-request-id',
-					'Access-Control-Allow-Credentials': false,
-					'Access-Control-Allow-Headers': 'Content- Type, status, access - control - allow - headers, access - control - allow - methods, access - control - allow - origin, cache - control, date, content - type, age, server, x - nf - request - id'
-				},
+				headers,
 				body: JSON.stringify({ code: "ERROR", message: err })
 			}
 		}
@@ -56,14 +45,7 @@ exports.handler = async (event, context) => {
 	} catch (err) {
 		return {
 			statusCode: 500,
-			headers: {
-				'content-type': 'application/json',
-				'Access-Control-Allow-Origin': '*',
-				'Access-Control-Allow-Methods': 'GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH',
-				'Access-Control-Expose-Headers': 'status, access-control-allow-headers, access-control-allow-methods, access-control-allow-origin, cache-control, date, content-type, age, server, x-nf-request-id',
-				'Access-Control-Allow-Credentials': false,
-				'Access-Control-Allow-Headers': 'Content- Type, status, access - control - allow - headers, access - control - allow - methods, access - control - allow - origin, cache - control, date, content - type, age, server, x - nf - request - id'
-			},
+			headers,
 			body: err.toString()
 		}
 	}
